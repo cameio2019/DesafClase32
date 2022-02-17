@@ -9,7 +9,7 @@ app.listen(PORT, () => console.log(`Listening on ${PORT} port.`))
 const logger = createLogger()
 
 app.use((req, res, next) => {
-    logger.info(`Reques recibida ${req.method} con método ${req.path}.`)
+    logger.info(`Request recibida ${req.method} con método ${req.path}.`)
     next()
 })
 
@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
 app.get('/error', (req, res) => {
     const { username } = req.query
     if (!username) {
-    logger.error(`Parametro de usuario no encontrado ${req.method} con metodo en ruta ${req.path}.`)
+    logger.error(`Parametro de usuario no encontrado ${req.method} con método en ruta ${req.path}.`)
     res.send({ status: 'error', message: 'Parámetro Inválido.' })
 } else {
     res.send({ status: 'success', username: username })
